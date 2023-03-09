@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_with_EF_2022.Migrations
 {
     [DbContext(typeof(GameContext))]
-    [Migration("20230127021241_Initiall")]
-    partial class Initiall
+    [Migration("20230309001612_azure")]
+    partial class azure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,6 +48,33 @@ namespace API_with_EF_2022.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BoardGames");
+                });
+
+            modelBuilder.Entity("API_with_EF_2022.Models.Fish", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Classification")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("FreshWater")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SaltWater")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Fishes");
                 });
 #pragma warning restore 612, 618
         }

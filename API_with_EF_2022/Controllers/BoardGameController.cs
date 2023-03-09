@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using API_with_EF_2022.DAL;
 using API_with_EF_2022.Models;
@@ -14,14 +14,14 @@ namespace API_with_EF_2022.Controllers
         BoardGameRepository repo = new BoardGameRepository();
          
         [HttpPost("add")]
-        public BoardGame AddBoardGame(string title, string descroption, int year, int count)
+        public BoardGame AddBoardGame(BoardGame game)
         {
-            BoardGame newBoardGame = new BoardGame
-            {
-                Title = title,
-                Description = descroption,
-                YearPublished = year,
-                RecommendedPlayerCount = count
+      BoardGame newBoardGame = new BoardGame
+      {
+                Title = game.Title,
+                Description = game.Description,
+                YearPublished = game.YearPublished,
+                RecommendedPlayerCount = game.RecommendedPlayerCount
             };
             return repo.AddBoardGame(newBoardGame);
         }

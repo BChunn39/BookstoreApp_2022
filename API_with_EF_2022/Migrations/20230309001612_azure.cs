@@ -4,7 +4,7 @@
 
 namespace API_with_EF_2022.Migrations
 {
-    public partial class Initiall : Migration
+    public partial class azure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,12 +23,31 @@ namespace API_with_EF_2022.Migrations
                 {
                     table.PrimaryKey("PK_BoardGames", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Fishes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Classification = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FreshWater = table.Column<bool>(type: "bit", nullable: false),
+                    SaltWater = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Fishes", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "BoardGames");
+
+            migrationBuilder.DropTable(
+                name: "Fishes");
         }
     }
 }

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/gc-ah-2022-db-bwc/databases/BoardGames_2022",
+      "type": "mssql.azure",
+      "connectionId": "GameDb"
+    }
+  }
+}
